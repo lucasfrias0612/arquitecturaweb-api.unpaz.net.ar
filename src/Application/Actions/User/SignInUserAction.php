@@ -16,7 +16,7 @@ class SignInUserAction extends UserAction
         $email = $this->resolveArg('email');
         $password = $this->resolveArg('password');
 
-        $token = array('token' => $this->userRepository->authenticate($email, $password));
+        $token = array('token' => $this->repository->authenticate($email, $password));
 
         $this->logger->info("User `${email}` singed in.");
 
