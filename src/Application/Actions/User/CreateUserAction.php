@@ -14,11 +14,11 @@ class CreateUserAction extends UserAction
         $name = $this->resolveArg('fullName');
         $email = $this->resolveArg('email');
         $password = $this->resolveArg('password');
-        $id = $this->userRepository->getLastId() + 1;
+        $id = $this->repository->getLastId() + 1;
         $newUser = new User($id, $email, $password, $name);
-        $this->userRepository->createUser($newUser);
+        $this->repository->createUser($newUser);
         $this->logger->info("User [`${id}`,`${email}`,`${password}`,`${name}`] was created.");
 
-        return $this->respondWithData($this->userRepository->findAll());
+        return $this->respondWithData($this->repository->findAll());
     }
 }

@@ -3,25 +3,10 @@ declare(strict_types=1);
 
 namespace App\Domain\User;
 
-interface UserRepository
+use App\Domain\EntityRepository;
+
+interface UserRepository extends EntityRepository
 {
-    /**
-     * @return User[]
-     */
-    public function findAll(): array;
-
-    /**
-     * @param int $id
-     * @return User
-     * @throws UserNotFoundException
-     */
-    public function findUserOfId(int $id);
-
-    /**
-     * @return int
-     */
-    public function getLastId(): int;
-
     /**
      * @param User $user
      * @return mixed

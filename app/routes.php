@@ -1,7 +1,11 @@
 <?php
 declare(strict_types=1);
 
+use App\Application\Actions\Meeting\CreateMeetingAction;
+use App\Application\Actions\Meeting\DeleteMeetingAction;
 use App\Application\Actions\Meeting\ListMeetingsAction;
+use App\Application\Actions\Meeting\UpdateMeetingAction;
+use App\Application\Actions\Meeting\ViewMeetingAction;
 use App\Application\Actions\User\ListUsersAction;
 use App\Application\Actions\User\ViewUserAction;
 use App\Application\Actions\User\CreateUserAction;
@@ -34,12 +38,12 @@ return function (App $app) {
         $group->get('/{id}', ViewMeetingAction::class);
         $group->post('', CreateMeetingAction::class);
         $group->patch('', UpdateMeetingAction::class);
-        $group->delete('/{id}', DeleteMeetingAction::class);
+        $group->delete('', DeleteMeetingAction::class);
     });
 
     $app->group('/v1/meeting/registration', function (Group $group) {
         $group->post('', RegisterAction::class);
-        $group->delete('/{id}', UnregisterAction::class);
+        $group->delete('', UnregisterAction::class);
     });
 
 };
