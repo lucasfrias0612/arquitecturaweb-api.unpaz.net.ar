@@ -16,7 +16,7 @@ class InMemoryUserRepositoryTest extends TestCase
 
         $userRepository = new InFileUserRepository([1 => $user]);
 
-        $this->assertEquals([$user], $userRepository->findAll());
+        $this->assertEquals([$user], $userRepository->getAll());
     }
 
     public function testFindAllUsersByDefault()
@@ -31,7 +31,7 @@ class InMemoryUserRepositoryTest extends TestCase
 
         $userRepository = new InFileUserRepository();
 
-        $this->assertEquals(array_values($users), $userRepository->findAll());
+        $this->assertEquals(array_values($users), $userRepository->getAll());
     }
 
     public function testFindUserOfId()
@@ -40,13 +40,13 @@ class InMemoryUserRepositoryTest extends TestCase
 
         $userRepository = new InFileUserRepository([1 => $user]);
 
-        $this->assertEquals($user, $userRepository->findOfId(1));
+        $this->assertEquals($user, $userRepository->getById(1));
     }
 
     public function testFindUserOfIdThrowsNotFoundException()
     {
         $userRepository = new InFileUserRepository([]);
         $this->expectException(UserNotFoundException::class);
-        $userRepository->findOfId(1);
+        $userRepository->getById(1);
     }
 }

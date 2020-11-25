@@ -22,6 +22,6 @@ class UpdateMeetingAction extends MeetingAction
         $this->repository->updateMeeting($meetingId, $newMeeting);
         $this->logger->info("Meeting ".$newMeeting->toString()." was updated by user with ID:".$userId.".");
 
-        return $this->respondWithData($this->repository->findAll());
+        return $this->respondWithData($this->repository->getAll());
     }
 }

@@ -19,6 +19,6 @@ class CreateUserAction extends UserAction
         $this->repository->createUser($newUser);
         $this->logger->info("User [`${id}`,`${email}`,`${password}`,`${name}`] was created.");
 
-        return $this->respondWithData($this->repository->findAll());
+        return $this->respondWithData($this->repository->getAll());
     }
 }

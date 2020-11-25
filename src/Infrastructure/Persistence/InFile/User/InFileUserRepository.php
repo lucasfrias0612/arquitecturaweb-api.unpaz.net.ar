@@ -1,14 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence\User;
+namespace App\Infrastructure\Persistence\InFile\User;
 
-use App\Domain\DomainException\DomainRecordNotFoundException;
 use App\Domain\User\IncorrectPasswordException;
 use App\Domain\User\User;
 use App\Domain\User\UserNotFoundException;
 use App\Domain\User\UserRepository;
-use App\Infrastructure\Persistence\InFileRepository;
+use App\Infrastructure\Persistence\InFile\InFileRepository;
 
 
 class InFileUserRepository extends InFileRepository implements UserRepository
@@ -59,5 +58,10 @@ class InFileUserRepository extends InFileRepository implements UserRepository
     function getFilePath(): string
     {
         return __DIR__ . '/users-db.json';
+    }
+
+    public function delete(int $id): bool
+    {
+        // TODO: Implement delete() method.
     }
 }

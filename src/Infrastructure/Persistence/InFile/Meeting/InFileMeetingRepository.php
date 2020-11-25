@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence\Meeting;
+namespace App\Infrastructure\Persistence\InFile\Meeting;
 
 use App\Domain\Meeting\Meeting;
 use App\Domain\Meeting\MeetingNotFoundException;
 use App\Domain\Meeting\MeetingRepository;
-use App\Infrastructure\Persistence\InFileRepository;
+use App\Infrastructure\Persistence\InFile\InFileRepository;
 
 class InFileMeetingRepository extends InFileRepository implements MeetingRepository
 {
@@ -39,7 +39,7 @@ class InFileMeetingRepository extends InFileRepository implements MeetingReposit
         $this->persist();
     }
 
-    public function deleteMeeting(int $id): bool
+    public function delete(int $id): bool
     {
         if(isset($this->records[$id])){
             unset($this->records[$id]);

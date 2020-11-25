@@ -7,6 +7,7 @@ use App\Application\Actions\Action;
 use App\Application\Actions\User\UserAction;
 use App\Domain\Meeting\Meeting;
 use App\Domain\Meeting\MeetingRepository;
+use App\Domain\User\UserRepository;
 use Psr\Log\LoggerInterface;
 use Slim\Exception\HttpBadRequestException;
 
@@ -27,7 +28,7 @@ abstract class MeetingAction extends Action
         $this->repository = $meetingRepository;
     }
 
-    /**
+    /**campusportada
      * @throws HttpBadRequestException
      */
     protected function resolveArgsAndConstructMeeting(): Meeting
@@ -47,6 +48,6 @@ abstract class MeetingAction extends Action
     protected function findMeetingOfId(string $idArgName): Meeting
     {
         $meetingId = (int)$this->resolveArg($idArgName);
-        return $this->repository->findOfId($meetingId);
+        return $this->repository->getById($meetingId);
     }
 }

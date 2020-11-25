@@ -10,7 +10,7 @@ class ListMeetingsAction extends MeetingAction
 
     protected function action(): Response
     {
-        $meetings = $this->repository->findAll();
+        $meetings = $this->repository->getAll();
 
         $this->logger->info("Meetings list was viewed.");
 

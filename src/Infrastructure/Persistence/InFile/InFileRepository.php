@@ -1,12 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Infrastructure\Persistence;
+namespace App\Infrastructure\Persistence\InFile;
 
 use App\Domain\EntityRepository;
 
 abstract class InFileRepository implements EntityRepository
 {
+    /**
+     * @var array
+     */
     protected $records;
 
     /**
@@ -24,12 +27,12 @@ abstract class InFileRepository implements EntityRepository
         }
     }
 
-    public function findAll(): array
+    public function getAll(): array
     {
         return array_values($this->records);
     }
 
-    public function findOfId(int $id)
+    public function getById(int $id)
     {
         if (!isset($this->records[$id])) {
             $this->throwDomainRecordNotFoundException();

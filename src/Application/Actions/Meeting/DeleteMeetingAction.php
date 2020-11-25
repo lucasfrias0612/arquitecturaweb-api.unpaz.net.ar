@@ -18,7 +18,7 @@ class DeleteMeetingAction extends MeetingAction
         $meetingId = (int) $this->resolveArg('meetingId');
         $userId = (int) $this->resolveArg('userId');
         $data['message']="Meeting of id ${meetingId} was ";
-        if($this->repository->deleteMeeting($meetingId)){
+        if($this->repository->delete($meetingId)){
             $data['message'].="deleted by user with ID:".$userId;
             $this->logger->info($data['message']);
         }else{

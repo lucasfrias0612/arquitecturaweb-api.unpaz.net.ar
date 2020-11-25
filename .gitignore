@@ -2,6 +2,7 @@
 .vscode/
 /coverage/
 /vendor/
+/postgresql-data/
 /logs/*
 !/logs/README.md
 .phpunit.result.cache

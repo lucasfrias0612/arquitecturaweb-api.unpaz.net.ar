@@ -46,4 +46,10 @@ return function (App $app) {
         $group->delete('', UnregisterAction::class);
     });
 
+    $app->get('/v1/test', function (Request $request, Response $response) {
+        $db =new \App\Infrastructure\Persistence\PostgreSQL\PostgresqlConnection("host=db port=5432 dbname=arq-web user=lucasfrias password=example");
+        $response->getBody()->write($db->executeSelectQuery("Select * from users"));
+        return $response;
+    });
+
 };

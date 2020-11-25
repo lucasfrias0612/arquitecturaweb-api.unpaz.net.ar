@@ -14,10 +14,9 @@ class CreateMeetingAction extends MeetingAction
     {
         $this->args = (array)$this->getFormData();
         $newMeeting =$this->resolveArgsAndConstructMeeting();
-        $newMeeting->setId($this->repository->getLastId() + 1);
         $this->repository->insertMeeting($newMeeting);
         $this->logger->info("Meeting ".$newMeeting->toString()." was created.");
 
-        return $this->respondWithData($this->repository->findAll());
+        return $this->respondWithData($this->repository->getAll());
     }
 }
